@@ -52,7 +52,7 @@ Create a bridge instance with network defaults and optional overrides.
     -   `xrpl`: override XRPL RPC, gateway, Chain ID, or add a seed
     -   `xrplevm`: override XRPL-EVM RPC, gateway, Chain ID, or add a private key
 
-It will expect you to input at least the private key or seed from the destination chain to build the wallet to sign and submit the transactions.
+It will expect you to input at least the private key or seed from the source chain to build the wallet to sign and submit the transactions.
 
 ### `bridge.transfer(asset, amount, options?)`
 
@@ -84,7 +84,8 @@ bridge.transfer(
   options: {
     destinationAddress: string;    // recipient on target chain
     doorAddress?: string;         // custom gateway contract
-    gasValue?: string;            // XRPL→EVM only
+    gasFeeAmount?: string;        // XRPL→EVM only
+    gasValue?: string;            // EVM→XRPL only
   }
 );
 ```
@@ -107,11 +108,11 @@ The SDK provides sane defaults for all networks (RPC endpoints, Axelar gateway &
 Bridge.fromConfig("mainnet", {
     xrplevm: {
         providerUrl: "https://my.custom.rpc",
-        privateKey: process.env.EVM_KEY,
+        privateKey: process.env.EVM_PRIVATE_KEY,
     },
     xrpl: {
         providerUrl: "wss://custom.xrpl.rpc",
-        keyOrSeed: process.env.XRPL_SEED,
+        seed: process.env.XRPL_SEED,
     },
 });
 ```

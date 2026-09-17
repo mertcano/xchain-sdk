@@ -7,7 +7,7 @@ dotenv.config();
 async function main() {
     const bridge = Bridge.fromConfig("devnet", {
         xrpl: {
-            seed: "sEdVXq1iJUcnUhsNhimNLwzgjPFiC9E" as string,
+            seed: process.env.XRPL_SEED as string,
         },
     });
 

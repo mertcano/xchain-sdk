@@ -20,7 +20,7 @@ async function main() {
     });
 
     // Destination XRPL address (replace with a real XRPL address)
-    const destinationAddress = "rhSMkNV5MVQEgkxH5YCAAE8KAEkXpP3N5u"; // sEdVXq1iJUcnUhsNhimNLwzgjPFiC9E
+    const destinationAddress = "rhSMkNV5MVQEgkxH5YCAAE8KAEkXpP3N5u";
 
     try {
         const result = await bridge.transfer(asset, destinationAddress);
